@@ -1,6 +1,8 @@
 #include "Application.h"
 #include "Log.h"
 
+#include <GLFW/glfw3.h>
+
 namespace Buzaka {
 
 #define BIND_EVENT_FUNC(func) std::bind(&func, this, std::placeholders::_1)
