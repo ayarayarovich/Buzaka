@@ -28,12 +28,12 @@ namespace Buzaka {
     class Event {
         friend class EventDispatcher;
     public:
-        virtual EventType GetEventType() const = 0;
-        virtual const char* GetName() const = 0;
-        virtual int32_t GetCategoryFlags() const = 0;
-        virtual std::string ToString() const { return GetName(); }
+        [[nodiscard]] virtual EventType GetEventType() const = 0;
+        [[nodiscard]] virtual const char* GetName() const = 0;
+        [[nodiscard]] virtual int32_t GetCategoryFlags() const = 0;
+        [[nodiscard]] virtual std::string ToString() const { return GetName(); }
 
-        bool IsInCategory(EventCategory category) const {
+        [[nodiscard]] bool IsInCategory(EventCategory category) const {
             return GetCategoryFlags() & category;
         }
 
@@ -45,7 +45,7 @@ namespace Buzaka {
         template<class EventClass>
         using EventListenerFunc = std::function<bool(EventClass&)>;
     public:
-        EventDispatcher(Event& event)
+        explicit EventDispatcher(Event& event)
             : m_Event(event) {}
 
         template<class EventClass>

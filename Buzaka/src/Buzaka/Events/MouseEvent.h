@@ -9,10 +9,10 @@ namespace Buzaka {
         MouseMovedEvent(float x, float y)
             : m_MouseX(x), m_MouseY(y) {}
 
-        inline float GetX() const { return m_MouseX; }
-        inline float GetY() const { return m_MouseY; }
+        [[nodiscard]] inline float GetX() const { return m_MouseX; }
+        [[nodiscard]] inline float GetY() const { return m_MouseY; }
 
-        std::string ToString() const override {
+        [[nodiscard]] std::string ToString() const override {
             std::stringstream ss;
             ss << "MouseMovedEvent: (" << m_MouseX << ", " << m_MouseY << ')';
             return ss.str();
@@ -30,10 +30,10 @@ namespace Buzaka {
         MouseScrolledEvent(float xOffset, float yOffset)
             : m_XOffset(xOffset), m_YOffset(yOffset) {}
 
-        inline float GetXOffset() const { return m_XOffset; }
-        inline float GetYOffset() const { return m_YOffset; }
+        [[nodiscard]] inline float GetXOffset() const { return m_XOffset; }
+        [[nodiscard]] inline float GetYOffset() const { return m_YOffset; }
 
-        std::string ToString() const override {
+        [[nodiscard]] std::string ToString() const override {
             std::stringstream ss;
             ss << "MouseScrolledEvent: (" << m_XOffset << ", " << m_YOffset << ')';
             return ss.str();
@@ -48,12 +48,12 @@ namespace Buzaka {
 
     class MouseButtonEvent : public Event {
     public:
-        inline int GetMouseButton() const { return m_Button; }
+        [[nodiscard]] inline int GetMouseButton() const { return m_Button; }
 
         EVENT_CLASS_CATEGORY(EventCategory::EventCategoryInput | EventCategory::EventCategoryMouseButton)
 
     protected:
-        MouseButtonEvent(int button)
+        explicit MouseButtonEvent(int button)
             : m_Button(button) {}
 
         int m_Button;
@@ -61,10 +61,10 @@ namespace Buzaka {
 
     class MouseButtonPressedEvent : public MouseButtonEvent {
     public:
-        MouseButtonPressedEvent(int button)
+        explicit MouseButtonPressedEvent(int button)
             : MouseButtonEvent(button) {}
 
-        std::string ToString() const override {
+        [[nodiscard]] std::string ToString() const override {
             std::stringstream ss;
             ss << "MouseButtonPressedEvent: " << m_Button;
             return ss.str();
@@ -75,10 +75,10 @@ namespace Buzaka {
 
     class MouseButtonReleasedEvent : public MouseButtonEvent {
     public:
-        MouseButtonReleasedEvent(int button)
+        explicit MouseButtonReleasedEvent(int button)
         : MouseButtonEvent(button) {}
 
-        std::string ToString() const override {
+        [[nodiscard]] std::string ToString() const override {
             std::stringstream ss;
             ss << "MouseButtonReleasedEvent: " << m_Button;
             return ss.str();

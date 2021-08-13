@@ -10,7 +10,7 @@ namespace Buzaka {
     class WindowsWindow : public Window {
     public:
         explicit WindowsWindow(const WindowProps& props);
-        virtual ~WindowsWindow();
+        ~WindowsWindow() override;
 
         void OnUpdate() override;
 
@@ -28,7 +28,7 @@ namespace Buzaka {
 
         GLFWwindow* m_Window;
         struct WindowData {
-            std::string Title;
+            std::string_view Title;
             unsigned int Width, Height;
             bool VSync;
 
