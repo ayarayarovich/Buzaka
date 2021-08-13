@@ -3,6 +3,7 @@
 #include "pch/bzpch.h"
 #include "Base.h"
 #include "Window.h"
+#include "Events.h"
 
 namespace Buzaka {
   class Application
@@ -11,7 +12,11 @@ namespace Buzaka {
     Application();
     virtual ~Application();
 
-      [[noreturn]] void Run();
+    void Run();
+
+    bool OnWindowClose(WindowCloseEvent& event);
+
+    void OnEvent(Event& event);
 
   private:
       std::unique_ptr<Window> m_Window;
