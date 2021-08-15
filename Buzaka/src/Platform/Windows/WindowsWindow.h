@@ -3,6 +3,7 @@
 #include "pch/bzpch.h"
 #include "Buzaka/Core/Window.h"
 
+#define GLFW_INCLUDE_NONE
 #include "GLFW/glfw3.h"
 
 namespace Buzaka {

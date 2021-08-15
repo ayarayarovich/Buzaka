@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.20)
 
-add_library(Buzaka STATIC ${BUZAKA_SOURCE_FILES})
+add_library(Buzaka STATIC)
 
 target_sources(Buzaka
         PRIVATE "src/Buzaka/Core/Log.cpp"
@@ -23,12 +23,10 @@ target_compile_definitions(Buzaka
         PUBLIC "BZ_DEBUG")
 
 
-# ==== Libs ======================
 # -- spdlog ----------------------
 add_subdirectory("vendor/spdlog")
 target_link_libraries(Buzaka
         PUBLIC spdlog::spdlog)
-# --------------------------------
 
 # -- glfw ------------------------
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
@@ -37,6 +35,13 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 add_subdirectory("vendor/glfw")
 target_link_libraries(Buzaka
         PUBLIC glfw)
-# --------------------------------
-# ================================
+
+# -- Glad ------------------------
+add_subdirectory("vendor/Glad")
+target_link_libraries(Buzaka
+        PUBLIC Glad)
+
+# -- opengl ----------------------
+target_link_libraries(Buzaka
+        PUBLIC opengl32)
 

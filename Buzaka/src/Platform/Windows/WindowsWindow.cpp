@@ -3,6 +3,8 @@
 #include "Buzaka/Core/Assert.h"
 #include "Buzaka/Core/Events.h"
 
+#include "glad/glad.h"
+
 namespace Buzaka {
 
     static bool s_GLFWInitialized = false;
@@ -31,13 +33,16 @@ namespace Buzaka {
 
         if (!s_GLFWInitialized) {
             int success = glfwInit();
-            BZ_CORE_ASSERT(success, "GLFW initialization failed.");
+            BZ_CORE_ASSERT(success, "Failed to initialize GLFW!");
             glfwSetErrorCallback(GLFWErrorCallback);
             s_GLFWInitialized = true;
         }
 
         m_Window = glfwCreateWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Title.data(), nullptr, nullptr);
         glfwMakeContextCurrent(m_Window);
+        int gladInitSuccess = gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
+        BZ_CORE_ASSERT(gladInitSuccess, "Failed to initialize Glad!")
+        BZ_CORE_INFO("OpenGL version: {0}", glGetString(GL_VERSION));
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
 

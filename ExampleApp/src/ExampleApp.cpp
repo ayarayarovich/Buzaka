@@ -36,6 +36,5 @@ public:
 };
 
 Buzaka::Application* Buzaka::CreateApplication() {
-    BZ_INFO("ExampleApp creation.")
     return new SandboxApp();
 }
