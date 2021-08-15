@@ -5,6 +5,7 @@
 #include <utility>
 #include <algorithm>
 #include <functional>
+#include <ranges>
 
 #include <string>
 #include <string_view>
