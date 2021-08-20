@@ -3,13 +3,33 @@ cmake_minimum_required(VERSION 3.20)
 add_library(Buzaka STATIC)
 
 target_sources(Buzaka
+        PRIVATE "src/Buzaka/Core/Assert.h"
+        PRIVATE "src/Buzaka/Core/Base.h"
+        PRIVATE "src/Buzaka/Core/EntryPoint.h"
+        PRIVATE "src/Buzaka/Core/Events.h"
+        PRIVATE "src/Buzaka/Core/Window.h"
+
+
+        PRIVATE "src/Buzaka/Core/Log.h"
         PRIVATE "src/Buzaka/Core/Log.cpp"
+
+        PRIVATE "src/Buzaka/Core/Layer.h"
         PRIVATE "src/Buzaka/Core/Layer.cpp"
+
+        PRIVATE "src/Buzaka/Core/LayerStack.h"
         PRIVATE "src/Buzaka/Core/LayerStack.cpp"
-        PRIVATE "src/Buzaka/Core/Application.cpp")
+
+        PRIVATE "src/Buzaka/Core/Application.h"
+        PRIVATE "src/Buzaka/Core/Application.cpp"
+
+        PRIVATE "src/Buzaka/Events/Event.h"
+        PRIVATE "src/Buzaka/Events/ApplicationEvent.h"
+        PRIVATE "src/Buzaka/Events/KeyEvent.h"
+        PRIVATE "src/Buzaka/Events/MouseEvent.h")
 
 if (WIN32)
     target_sources(Buzaka
+            PRIVATE "src/Platform/Windows/WindowsWindow.h"
             PRIVATE "src/Platform/Windows/WindowsWindow.cpp")
 endif(WIN32)
 
@@ -45,3 +65,7 @@ target_link_libraries(Buzaka
 target_link_libraries(Buzaka
         PUBLIC opengl32)
 
+# -- imgui -----------------------
+add_subdirectory("vendor/ImGui")
+target_link_libraries(Buzaka
+        PUBLIC ImGui)
