@@ -6,8 +6,6 @@ set(CMAKE_CXX_STANDARD 23)
 add_subdirectory("Buzaka")
 add_subdirectory("ExampleApp")
 
-add_subdirectory("Sandbox" EXCLUDE_FROM_ALL)
-
 target_compile_definitions(Buzaka
         PUBLIC "BZ_PLATFORM_WINDOWS"
         )
