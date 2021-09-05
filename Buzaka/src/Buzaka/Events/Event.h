@@ -17,7 +17,7 @@ namespace Buzaka {
     };
 
     enum EventCategory {
-        None = 0,
+        EventCategoryNone = 0,
         EventCategoryApplication = 1 << 0,
         EventCategoryInput       = 1 << 1,
         EventCategoryKeyboard    = 1 << 2,
