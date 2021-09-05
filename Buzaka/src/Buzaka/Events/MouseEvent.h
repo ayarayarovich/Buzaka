@@ -19,7 +19,7 @@ namespace Buzaka {
         }
 
         EVENT_CLASS_TYPE(EventType::MouseMoved)
-        EVENT_CLASS_CATEGORY(EventCategory::EventCategoryInput | EventCategory::EventCategoryMouse)
+        EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
 
     private:
         float m_MouseX, m_MouseY;
@@ -40,7 +40,7 @@ namespace Buzaka {
         }
 
         EVENT_CLASS_TYPE(EventType::MouseScrolled)
-        EVENT_CLASS_CATEGORY(EventCategory::EventCategoryInput | EventCategory::EventCategoryMouse)
+        EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouse)
 
     private:
         float m_XOffset, m_YOffset;
@@ -50,7 +50,7 @@ namespace Buzaka {
     public:
         [[nodiscard]] inline int GetMouseButton() const { return m_Button; }
 
-        EVENT_CLASS_CATEGORY(EventCategory::EventCategoryInput | EventCategory::EventCategoryMouseButton)
+        EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryMouseButton)
 
     protected:
         explicit MouseButtonEvent(int button)
