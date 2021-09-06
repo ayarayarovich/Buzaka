@@ -18,7 +18,7 @@ namespace Buzaka {
             return ss.str();
         }
 
-        EVENT_CLASS_CATEGORY(EventCategoryApplication)
+        EVENT_CLASS_CATEGORY(EventCategory_Application)
         EVENT_CLASS_TYPE(EventType::WindowResize)
 
     private:
@@ -35,7 +35,7 @@ namespace Buzaka {
             return ss.str();
         }
 
-        EVENT_CLASS_CATEGORY(EventCategoryApplication)
+        EVENT_CLASS_CATEGORY(EventCategory_Application)
         EVENT_CLASS_TYPE(EventType::WindowClose)
     };
 
@@ -49,7 +49,7 @@ namespace Buzaka {
             return ss.str();
         }
 
-        EVENT_CLASS_CATEGORY(EventCategoryApplication)
+        EVENT_CLASS_CATEGORY(EventCategory_Application)
         EVENT_CLASS_TYPE(EventType::WindowGotFocus)
     };
 
@@ -63,7 +63,7 @@ namespace Buzaka {
             return ss.str();
         }
 
-        EVENT_CLASS_CATEGORY(EventCategoryApplication)
+        EVENT_CLASS_CATEGORY(EventCategory_Application)
         EVENT_CLASS_TYPE(EventType::WindowLostFocus)
     };
 
@@ -81,7 +81,7 @@ namespace Buzaka {
             return ss.str();
         }
 
-        EVENT_CLASS_CATEGORY(EventCategoryApplication)
+        EVENT_CLASS_CATEGORY(EventCategory_Application)
         EVENT_CLASS_TYPE(EventType::WindowMoved)
 
     private:

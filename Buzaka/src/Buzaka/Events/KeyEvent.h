@@ -8,7 +8,7 @@ namespace Buzaka {
     public:
         [[nodiscard]] inline int GetKeyCode() const { return m_KeyCode; }
 
-        EVENT_CLASS_CATEGORY(EventCategoryInput | EventCategoryKeyboard)
+        EVENT_CLASS_CATEGORY(EventCategory_Input | EventCategory_Keyboard)
 
     protected:
         explicit KeyEvent(int keycode)
