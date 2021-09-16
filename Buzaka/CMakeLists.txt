@@ -28,6 +28,8 @@ target_sources(Buzaka
         PRIVATE "src/Buzaka/Events/MouseEvent.h")
 
 if (WIN32)
+    target_compile_definitions(Buzaka
+            PUBLIC "BZ_PLATFORM_WINDOWS")
     target_sources(Buzaka
             PRIVATE "src/Platform/Windows/WindowsWindow.h"
             PRIVATE "src/Platform/Windows/WindowsWindow.cpp")
@@ -40,8 +42,7 @@ target_precompile_headers(Buzaka
         PRIVATE "src/pch/bzpch.h")
 
 target_compile_definitions(Buzaka
-        PUBLIC "BZ_DEBUG")
-
+        PUBLIC "$<$<CONFIG:Debug>:BZ_DEBUG>")
 
 # -- spdlog ----------------------
 add_subdirectory("vendor/spdlog")
