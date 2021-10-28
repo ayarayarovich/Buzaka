@@ -45,15 +45,12 @@ target_compile_definitions(Buzaka
         PUBLIC "$<$<CONFIG:Debug>:BZ_DEBUG>")
 
 # -- spdlog ----------------------
-add_subdirectory("vendor/spdlog")
+find_package(spdlog REQUIRED)
 target_link_libraries(Buzaka
-        PUBLIC spdlog::spdlog)
+        PUBLIC spdlog::spdlog spdlog::spdlog_header_only)
 
 # -- glfw ------------------------
-set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-add_subdirectory("vendor/glfw")
+find_package(glfw3 REQUIRED)
 target_link_libraries(Buzaka
         PUBLIC glfw)
 
@@ -65,8 +62,3 @@ target_link_libraries(Buzaka
 # -- opengl ----------------------
 target_link_libraries(Buzaka
         PUBLIC opengl32)
-
-# -- imgui -----------------------
-add_subdirectory("vendor/ImGui")
-target_link_libraries(Buzaka
-        PUBLIC ImGui)
