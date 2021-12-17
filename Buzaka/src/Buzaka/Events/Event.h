@@ -12,7 +12,7 @@ namespace Buzaka {
         None = 0,
         WindowClose, WindowResize, WindowGotFocus, WindowLostFocus, WindowMoved,
         // AppTick, AppUpdate, AppRender, - maybe going to be implemented in the future.
-        KeyPressed, KeyReleased,
+        KeyPressed, KeyReleased, KeyTyped,
         MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
     };
 

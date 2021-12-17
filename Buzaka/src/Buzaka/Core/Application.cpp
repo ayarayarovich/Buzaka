@@ -7,18 +7,20 @@
 
 namespace Buzaka {
 
-#define BIND_EVENT_FUNC(func) std::bind(&func, this, std::placeholders::_1)
+    Application* Application::s_Instance = nullptr;
 
     Application::Application() {
+        BZ_CORE_ASSERT(s_Instance == nullptr, "Application instance already exists!");
+        s_Instance = this;
         m_Window = std::unique_ptr<Window>(Window::Create());
-        m_Window->SetEventCallback(BIND_EVENT_FUNC(Application::OnEvent));
+        m_Window->SetEventCallback(BZ_BIND_EVENT_FUNC(Application::OnEvent));
     };
 
     Application::~Application() = default;
 
     void Application::OnEvent(Event& event) {
         EventDispatcher dispatcher(event);
-        dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FUNC(Application::OnWindowClose));
+        dispatcher.Dispatch<WindowCloseEvent>(BZ_BIND_EVENT_FUNC(Application::OnWindowClose));
 
 //        BZ_CORE_TRACE("{0}", event);
 

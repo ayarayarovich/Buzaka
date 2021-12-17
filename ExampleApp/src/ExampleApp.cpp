@@ -1,29 +1,19 @@
 
 #include "Buzaka.h"
+#include <glad/glad.h>
 
 class ExampleLayer : public Buzaka::Layer {
 public:
     ExampleLayer() : Buzaka::Layer("ExampleLayer") {}
 
     void OnEvent(Buzaka::Event& event) override {
-        Buzaka::EventDispatcher dispatcher(event);
-        dispatcher.Dispatch<Buzaka::MouseButtonPressedEvent>([this](Buzaka::MouseButtonPressedEvent& event) -> bool {
-            BZ_INFO("{0}: {1} handled", GetDebugName(), event.GetName());
-            return true;
-        });
+        BZ_TRACE("{0}", event);
     }
-};
 
-class ExampleOverlay : public Buzaka::Layer {
-public:
-    ExampleOverlay() : Buzaka::Layer("ExampleOverlay") {}
-
-    void OnEvent(Buzaka::Event& event) override {
-        Buzaka::EventDispatcher dispatcher(event);
-        dispatcher.Dispatch<Buzaka::MouseButtonPressedEvent>([this](Buzaka::MouseButtonPressedEvent& event) -> bool {
-            BZ_INFO("{0}: {1} hasn't been handled", GetDebugName(), event.GetName());
-            return false;
-        });
+    void OnUpdate() override
+    {
+        glClearColor(1.f, 0.3f, 0.5f, 0.f);
+        glClear(GL_COLOR_BUFFER_BIT);
     }
 };
 
@@ -31,7 +21,7 @@ class SandboxApp : public Buzaka::Application {
 public:
     SandboxApp() {
         PushLayer(new ExampleLayer());
-        PushOverlay(new ExampleOverlay());
+        PushOverlay(new Buzaka::ImGuiLayer());
     }
 };
 

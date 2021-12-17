@@ -89,6 +89,13 @@ namespace Buzaka {
             }
         });
 
+        glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int keycode) {
+            WindowData& windowData = *(WindowData*) glfwGetWindowUserPointer(window);
+
+            KeyTypedEvent event(keycode);
+            windowData.EventCallback(event);
+        });
+
         glfwSetMouseButtonCallback(m_Window, [](GLFWwindow* window, int button, int action, int mods) {
            WindowData& windowData = *(WindowData*) glfwGetWindowUserPointer(window);
 

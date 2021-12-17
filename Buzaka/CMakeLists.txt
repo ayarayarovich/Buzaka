@@ -25,14 +25,20 @@ target_sources(Buzaka
         PRIVATE "src/Buzaka/Events/Event.h"
         PRIVATE "src/Buzaka/Events/ApplicationEvent.h"
         PRIVATE "src/Buzaka/Events/KeyEvent.h"
-        PRIVATE "src/Buzaka/Events/MouseEvent.h")
+        PRIVATE "src/Buzaka/Events/MouseEvent.h"
+
+        PRIVATE "src/Buzaka/ImGui/ImGuiLayer.h"
+        PRIVATE "src/Buzaka/ImGui/ImGuiLayer.cpp")
 
 if (WIN32)
     target_compile_definitions(Buzaka
             PUBLIC "BZ_PLATFORM_WINDOWS")
     target_sources(Buzaka
             PRIVATE "src/Platform/Windows/WindowsWindow.h"
-            PRIVATE "src/Platform/Windows/WindowsWindow.cpp")
+            PRIVATE "src/Platform/Windows/WindowsWindow.cpp"
+
+            PRIVATE "src/Platform/OpenGL/ImGuiOpenGLRenderer.h"
+            PRIVATE "src/Platform/OpenGL/ImGuiOpenGLRenderer.cpp")
 endif(WIN32)
 
 target_include_directories(Buzaka
@@ -62,3 +68,8 @@ target_link_libraries(Buzaka
 # -- opengl ----------------------
 target_link_libraries(Buzaka
         PUBLIC opengl32)
+
+# -- imgui -----------------------
+find_package(imgui REQUIRED)
+target_link_libraries(Buzaka
+        PUBLIC imgui::imgui)

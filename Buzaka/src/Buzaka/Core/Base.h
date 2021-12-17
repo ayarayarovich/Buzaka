@@ -18,3 +18,5 @@
 #else
 	#define BZ_DEBUGBREAK()
 #endif
+
+#define BZ_BIND_EVENT_FUNC(func) std::bind(&func, this, std::placeholders::_1)
