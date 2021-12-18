@@ -7,6 +7,7 @@
 #include "Events.h"
 #include "Layer.h"
 #include "LayerStack.h"
+#include "Input.h"
 
 namespace Buzaka {
   class Application

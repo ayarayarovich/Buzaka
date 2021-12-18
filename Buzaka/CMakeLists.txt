@@ -8,6 +8,7 @@ target_sources(Buzaka
         PRIVATE "src/Buzaka/Core/EntryPoint.h"
         PRIVATE "src/Buzaka/Core/Events.h"
         PRIVATE "src/Buzaka/Core/Window.h"
+        PRIVATE "src/Buzaka/Core/Input.h"
 
 
         PRIVATE "src/Buzaka/Core/Log.h"
@@ -36,6 +37,9 @@ if (WIN32)
     target_sources(Buzaka
             PRIVATE "src/Platform/Windows/WindowsWindow.h"
             PRIVATE "src/Platform/Windows/WindowsWindow.cpp"
+
+            PRIVATE "src/Platform/Windows/WindowsInput.h"
+            PRIVATE "src/Platform/Windows/WindowsInput.cpp"
 
             PRIVATE "src/Platform/OpenGL/ImGuiOpenGLRenderer.h"
             PRIVATE "src/Platform/OpenGL/ImGuiOpenGLRenderer.cpp")

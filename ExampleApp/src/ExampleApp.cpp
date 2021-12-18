@@ -7,7 +7,7 @@ public:
     ExampleLayer() : Buzaka::Layer("ExampleLayer") {}
 
     void OnEvent(Buzaka::Event& event) override {
-        BZ_TRACE("{0}", event);
+        //BZ_TRACE("{0}", event);
     }
 
     void OnUpdate() override
