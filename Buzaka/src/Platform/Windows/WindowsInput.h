@@ -8,11 +8,11 @@ namespace Buzaka {
 	class WindowsInput : public Input
 	{
 	protected:
-		virtual bool IsKeyPressedImpl(int keycode) const override;
-		virtual bool IsMouseButtonPressedImpl(int button) const override;
-		virtual std::pair<float, float> GetMousePositionImpl() const override;
-		virtual float GetMouseXImpl() const override;
-		virtual float GetMouseYImpl() const override;
+		[[nodiscard]] virtual bool IsKeyPressedImpl(int keycode) const override;
+		[[nodiscard]] virtual bool IsMouseButtonPressedImpl(int button) const override;
+		[[nodiscard]] virtual std::pair<float, float> GetMousePositionImpl() const override;
+		[[nodiscard]] virtual float GetMouseXImpl() const override;
+		[[nodiscard]] virtual float GetMouseYImpl() const override;
 	};
 
 }
