@@ -22,8 +22,6 @@ namespace Buzaka {
         EventDispatcher dispatcher(event);
         dispatcher.Dispatch<WindowCloseEvent>(BZ_BIND_EVENT_FUNC(Application::OnWindowClose));
 
-//        BZ_CORE_TRACE("{0}", event);
-
         for (Layer* layer : std::ranges::reverse_view(m_LayerStack)) {
           layer->OnEvent(event);
           if (event.IsHandled())
@@ -38,9 +36,6 @@ namespace Buzaka {
 
             for (Layer* layer : m_LayerStack)
                 layer->OnUpdate();
-
-            auto [x, y] = Input::GetMousePosition();
-            BZ_CORE_TRACE("{0}, {1}", x, y);
 
             m_Window->OnUpdate();
         }
