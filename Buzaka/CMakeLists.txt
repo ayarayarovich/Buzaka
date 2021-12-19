@@ -79,3 +79,8 @@ target_link_libraries(Buzaka
 find_package(imgui REQUIRED)
 target_link_libraries(Buzaka
         PUBLIC imgui::imgui)
+
+# -- glm -------------------------
+find_package(glm REQUIRED)
+target_link_libraries(Buzaka
+        PRIVATE glm::glm)
