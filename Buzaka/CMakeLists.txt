@@ -9,6 +9,8 @@ target_sources(Buzaka
         PRIVATE "src/Buzaka/Core/Events.h"
         PRIVATE "src/Buzaka/Core/Window.h"
         PRIVATE "src/Buzaka/Core/Input.h"
+        PRIVATE "src/Buzaka/Core/KeyCodes.h"
+        PRIVATE "src/Buzaka/Core/MouseButtonCodes.h"
 
 
         PRIVATE "src/Buzaka/Core/Log.h"
