@@ -79,6 +79,8 @@ target_link_libraries(Buzaka
 find_package(imgui REQUIRED)
 target_link_libraries(Buzaka
         PUBLIC imgui::imgui)
+target_compile_definitions(Buzaka
+        PUBLIC "IMGUI_IMPL_OPENGL_LOADER_GLAD")
 
 # -- glm -------------------------
 find_package(glm REQUIRED)

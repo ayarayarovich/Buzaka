@@ -15,6 +15,8 @@ namespace Buzaka {
         virtual void OnUpdate();
         virtual void OnEvent(Event& event);
 
+        virtual void OnImGuiRender();
+
         [[nodiscard]] inline std::string_view GetDebugName() const { return m_DebugName; };
 
     private:

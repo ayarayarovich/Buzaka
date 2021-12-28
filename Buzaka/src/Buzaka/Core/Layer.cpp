@@ -17,4 +17,9 @@ namespace Buzaka {
     void Layer::OnEvent(Event &event) {
 
     }
+
+    void Layer::OnImGuiRender()
+    {
+
+    }
 }

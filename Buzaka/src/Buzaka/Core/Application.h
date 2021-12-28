@@ -9,6 +9,8 @@
 #include "LayerStack.h"
 #include "Input.h"
 
+#include "Buzaka/ImGui/ImGuiLayer.h"
+
 namespace Buzaka {
   class Application
   {
@@ -29,9 +31,10 @@ namespace Buzaka {
     inline Window& GetWindow() { return *m_Window; }
 
   private:
-      std::unique_ptr<Window> m_Window;
       bool m_Running = true;
+      std::unique_ptr<Window> m_Window;
       LayerStack m_LayerStack;
+      ImGuiLayer* m_ImGuiLayer;
 
   private:
       static Application* s_Instance;
