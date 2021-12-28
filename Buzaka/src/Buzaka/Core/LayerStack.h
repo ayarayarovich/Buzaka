@@ -7,7 +7,6 @@ namespace Buzaka {
 
     class LayerStack {
     public:
-        LayerStack();
         ~LayerStack();
 
         void PushLayer(Layer* layer);
@@ -22,7 +21,7 @@ namespace Buzaka {
 
     private:
         std::vector<Layer*> m_LayerStack;
-        std::vector<Layer*>::iterator m_LayerInsertTo;
+        unsigned int m_LayerInsertToIndex = 0;
     };
 
 }

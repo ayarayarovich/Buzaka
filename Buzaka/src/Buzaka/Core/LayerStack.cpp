@@ -2,17 +2,14 @@
 
 namespace Buzaka {
 
-    LayerStack::LayerStack() {
-        m_LayerInsertTo = m_LayerStack.begin();
-    }
-
     LayerStack::~LayerStack() {
         for (Layer* layer : m_LayerStack)
             delete layer;
     }
 
     void LayerStack::PushLayer(Layer* layer) {
-        m_LayerInsertTo = m_LayerStack.emplace(m_LayerInsertTo, layer);
+        m_LayerStack.emplace(m_LayerStack.begin() + m_LayerInsertToIndex, layer);
+        m_LayerInsertToIndex += 1;
     }
 
     void LayerStack::PushOverlay(Layer* overlay) {
@@ -23,7 +20,7 @@ namespace Buzaka {
         auto it = std::find(m_LayerStack.begin(), m_LayerStack.end(), layer);
         if (it != m_LayerStack.end()) {
             m_LayerStack.erase(it);
-            m_LayerInsertTo--;
+            m_LayerInsertToIndex--;
         }
     }
 

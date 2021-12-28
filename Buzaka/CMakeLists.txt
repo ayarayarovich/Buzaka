@@ -41,10 +41,7 @@ if (WIN32)
             PRIVATE "src/Platform/Windows/WindowsWindow.cpp"
 
             PRIVATE "src/Platform/Windows/WindowsInput.h"
-            PRIVATE "src/Platform/Windows/WindowsInput.cpp"
-
-            PRIVATE "src/Platform/OpenGL/ImGuiOpenGLRenderer.h"
-            PRIVATE "src/Platform/OpenGL/ImGuiOpenGLRenderer.cpp")
+            PRIVATE "src/Platform/Windows/WindowsInput.cpp")
 endif(WIN32)
 
 target_include_directories(Buzaka
@@ -79,6 +76,8 @@ target_link_libraries(Buzaka
 find_package(imgui REQUIRED)
 target_link_libraries(Buzaka
         PUBLIC imgui::imgui)
+target_compile_definitions(Buzaka
+        PUBLIC "IMGUI_IMPL_OPENGL_LOADER_GLAD")
 
 # -- glm -------------------------
 find_package(glm REQUIRED)
