@@ -1,3 +1,6 @@
+
+#include <Buzaka/Core/Window.h>
+
 #include "WindowsWindow.h"
 #include "Buzaka/Core/Log.h"
 #include "Buzaka/Core/Assert.h"
@@ -45,6 +48,8 @@ namespace Buzaka {
         BZ_CORE_INFO("OpenGL version: {0}", glGetString(GL_VERSION));
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
+
+        glClearColor(0, 0, 0, 1);
 
         // GLFW callbacks
         glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height) {
@@ -159,6 +164,7 @@ namespace Buzaka {
     void WindowsWindow::OnUpdate() {
         glfwPollEvents();
         glfwSwapBuffers(m_Window);
+        glClear(GL_COLOR_BUFFER_BIT);
     }
 
     void WindowsWindow::SetVSync(bool enabled) {
