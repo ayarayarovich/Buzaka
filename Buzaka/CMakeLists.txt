@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.20)
 
 add_library(Buzaka STATIC)
 
+target_compile_features(Buzaka
+        PUBLIC cxx_std_23)
+
 target_sources(Buzaka
         PRIVATE "src/Buzaka/Core/Assert.h"
         PRIVATE "src/Buzaka/Core/Base.h"
