@@ -5,7 +5,7 @@
 //temporary
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
-#include <glad/glad.h>
+#include <glad/gl.h>
 
 //#include "Buzaka/Core/Log.h"
 #include "Buzaka/Core/Application.h"
@@ -50,7 +50,7 @@ namespace Buzaka {
         // setup Platform/Renderer bindings
         const bool installGlfwCallbacks = true;
         ImGui_ImplGlfw_InitForOpenGL(window, installGlfwCallbacks);
-        ImGui_ImplOpenGL3_Init("#version 400");
+        ImGui_ImplOpenGL3_Init("#version 460");
     }
 
     void ImGuiLayer::OnDetach()
@@ -86,8 +86,6 @@ namespace Buzaka {
 
     void ImGuiLayer::OnImGuiRender()
     {
-        static bool show = true;
-        ImGui::ShowDemoWindow(&show);
     }
 
 }
