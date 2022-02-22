@@ -25,11 +25,11 @@ namespace Buzaka {
         EventDispatcher dispatcher(event);
         dispatcher.Dispatch<WindowCloseEvent>(BZ_BIND_EVENT_FUNC(Application::OnWindowClose));
 
-        for (Layer* layer : std::ranges::reverse_view(m_LayerStack)) {
-          layer->OnEvent(event);
-          if (event.IsHandled())
-              break;
-        };
+        for (auto rit = m_LayerStack.rbegin(); rit != m_LayerStack.rend(); rit++) {
+            (*rit)->OnEvent(event);
+            if (event.IsHandled())
+                break;
+        }
     }
 
     void Application::Run() {
