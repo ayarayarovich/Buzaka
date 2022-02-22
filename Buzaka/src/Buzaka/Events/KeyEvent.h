@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Event.h"
+#include "Buzaka/Core/KeyCodes.h"
 
 namespace Buzaka {
 
@@ -8,21 +9,31 @@ namespace Buzaka {
     public:
         [[nodiscard]] inline int GetKeyCode() const { return m_KeyCode; }
 
+        [[nodiscard]] inline bool WithCtrl() const { return m_Mods & BZ_MOD_CONTROL; }
+        [[nodiscard]] inline bool WithShift() const { return m_Mods & BZ_MOD_SHIFT; }
+        [[nodiscard]] inline bool WithAlt() const { return m_Mods & BZ_MOD_ALT; }
+
         EVENT_CLASS_CATEGORY(EventCategory_Input | EventCategory_Keyboard)
 
     protected:
-        explicit KeyEvent(int keycode)
-            : m_KeyCode(keycode) {}
+        explicit KeyEvent(int keycode, int mods = 0)
+            : m_KeyCode(keycode), m_Mods(mods) {}
 
         int m_KeyCode;
+        int m_Mods;
     };
 
     class KeyPressedEvent : public KeyEvent {
     public:
-        KeyPressedEvent(int keycode, int repeatCount)
-            : KeyEvent(keycode), m_RepeatCount(repeatCount) {}
+        KeyPressedEvent(int keycode, int repeatCount, int mods)
+            : KeyEvent(keycode, mods), m_RepeatCount(repeatCount) {}
 
         [[nodiscard]] inline int GetRepeatCount() const { return m_RepeatCount; }
+
+        [[nodiscard]] inline bool WithCtrl() const { return m_Mods & BZ_MOD_CONTROL; }
+        [[nodiscard]] inline bool WithShift() const { return m_Mods & BZ_MOD_SHIFT; }
+        [[nodiscard]] inline bool WithAlt() const { return m_Mods & BZ_MOD_ALT; }
+
 
         [[nodiscard]] std::string ToString() const override {
             std::stringstream ss;
@@ -38,8 +49,13 @@ namespace Buzaka {
 
     class KeyReleasedEvent : public KeyEvent {
     public:
-        explicit KeyReleasedEvent(int keycode)
-            : KeyEvent(keycode) {}
+        explicit KeyReleasedEvent(int keycode, int mods)
+            : KeyEvent(keycode, mods) {}
+
+        [[nodiscard]] inline bool WithCtrl() const { return m_Mods & BZ_MOD_CONTROL; }
+        [[nodiscard]] inline bool WithShift() const { return m_Mods & BZ_MOD_SHIFT; }
+        [[nodiscard]] inline bool WithAlt() const { return m_Mods & BZ_MOD_ALT; }
+
 
         [[nodiscard]] std::string ToString() const override {
             std::stringstream ss;

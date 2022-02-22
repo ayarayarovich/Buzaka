@@ -123,3 +123,10 @@
 #define BZ_KEY_RIGHT_ALT          346
 #define BZ_KEY_RIGHT_SUPER        347
 #define BZ_KEY_MENU               348
+
+#define BZ_MOD_SHIFT           0x0001
+#define BZ_MOD_CONTROL         0x0002
+#define BZ_MOD_ALT             0x0004
+#define BZ_MOD_SUPER           0x0008
+#define BZ_MOD_CAPS_LOCK       0x0010
+#define BZ_MOD_NUM_LOCK        0x0020

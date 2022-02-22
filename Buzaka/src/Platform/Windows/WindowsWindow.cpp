@@ -75,19 +75,19 @@ namespace Buzaka {
             switch (action) {
                 case GLFW_PRESS:
                 {
-                    KeyPressedEvent event(key, 0);
+                    KeyPressedEvent event(key, 0, mods);
                     windowData.EventCallback(event);
                     break;
                 }
                 case GLFW_RELEASE:
                 {
-                    KeyReleasedEvent event(key);
+                    KeyReleasedEvent event(key, mods);
                     windowData.EventCallback(event);
                     break;
                 }
                 case GLFW_REPEAT:
                 {
-                    KeyPressedEvent event(key, 1);
+                    KeyPressedEvent event(key, 1, mods);
                     windowData.EventCallback(event);
                     break;
                 }
