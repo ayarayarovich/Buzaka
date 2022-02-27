@@ -1,12 +1,12 @@
 
-#include <Buzaka/Core/Window.h>
+#include "Buzaka/Core/Window.h"
+#include "Buzaka/Renderer/GraphicsContext.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 
 #include "WindowsWindow.h"
 #include "Buzaka/Core/Log.h"
 #include "Buzaka/Core/Assert.h"
 #include "Buzaka/Core/Events.h"
-
-#include "glad/gl.h"
 
 namespace Buzaka {
 
@@ -42,14 +42,12 @@ namespace Buzaka {
         }
 
         m_Window = glfwCreateWindow((int)m_Data.Width, (int)m_Data.Height, m_Data.Title.data(), nullptr, nullptr);
-        glfwMakeContextCurrent(m_Window);
-        int gladInitSuccess = gladLoadGL((GLADloadfunc)glfwGetProcAddress);
-        BZ_CORE_ASSERT(gladInitSuccess, "Failed to initialize Glad!")
-        BZ_CORE_INFO("OpenGL version: {0}", glGetString(GL_VERSION));
+
+        m_Context = new OpenGLContext(m_Window);
+        m_Context->Init();
+
         glfwSetWindowUserPointer(m_Window, &m_Data);
         SetVSync(true);
-
-        glClearColor(0, 0, 0, 1);
 
         // GLFW callbacks
         glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height) {
@@ -163,8 +161,7 @@ namespace Buzaka {
 
     void WindowsWindow::OnUpdate() {
         glfwPollEvents();
-        glfwSwapBuffers(m_Window);
-        glClear(GL_COLOR_BUFFER_BIT);
+        m_Context->SwapBuffers();
     }
 
     void WindowsWindow::SetVSync(bool enabled) {

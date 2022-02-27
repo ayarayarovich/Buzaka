@@ -14,6 +14,7 @@ target_sources(Buzaka
         PRIVATE "src/Buzaka/Core/Input.h"
         PRIVATE "src/Buzaka/Core/KeyCodes.h"
         PRIVATE "src/Buzaka/Core/MouseButtonCodes.h"
+        PRIVATE "src/Buzaka/Renderer/GraphicsContext.h"
 
 
         PRIVATE "src/Buzaka/Core/Log.h"
@@ -44,7 +45,10 @@ if (WIN32)
             PRIVATE "src/Platform/Windows/WindowsWindow.cpp"
 
             PRIVATE "src/Platform/Windows/WindowsInput.h"
-            PRIVATE "src/Platform/Windows/WindowsInput.cpp")
+            PRIVATE "src/Platform/Windows/WindowsInput.cpp"
+
+            PRIVATE "src/Platform/OpenGL/OpenGLContext.h"
+            PRIVATE "src/Platform/OpenGL/OpenGLContext.cpp")
 endif(WIN32)
 
 target_include_directories(Buzaka

@@ -31,6 +31,8 @@ namespace Buzaka {
         void Shutdown();
 
         GLFWwindow* m_Window;
+        GraphicsContext *m_Context;
+
         struct WindowData {
             std::string_view Title;
             unsigned int Width, Height;
